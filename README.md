@@ -1,7 +1,9 @@
 Contour_Tracing
 ===============
 
-An implementation of the Moore Neighborhood algorithm used to trace the contours of a given image and output a JSON (or plist) file of the resulting pixel coordinates. In order to use, follow these steps:
+An implementation of the Moore Neighborhood algorithm used to trace the contours of a given image and output a JSON (or plist) file of the resulting pixel coordinates. If an image is made up of distinct polygons, the coordinate data for each polygon will be placed in separate arrays. Coordinate data is of the form @"{x,y}". This data can be parsed from an iOS application using code(CGPointFromString).
+
+In order to use the program, follow these steps:
 
     debug_constants.h
     
