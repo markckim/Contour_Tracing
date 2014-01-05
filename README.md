@@ -6,3 +6,5 @@ An implementation of the Moore Neighborhood algorithm used to trace the contours
 ![Red Square Demo](http://i.imgur.com/iDj5QKp.png?raw=true)
 
 ![Arrow Demo](http://i.imgur.com/BdR7lIM.png?raw=true)
+
+![Shapes Demo](http://i.imgur.com/RqqQcGV.png?raw=true)
