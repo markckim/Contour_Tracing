@@ -7,4 +7,4 @@ An implementation of the Moore Neighborhood algorithm used to trace the contours
 
 ![Alien Demo](http://i.imgur.com/KU0g7d5.png?raw=true)
 
-Example images taken from http://kenney.nl/
+Sample images taken from http://kenney.nl/
