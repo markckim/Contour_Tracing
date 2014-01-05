@@ -96,6 +96,7 @@
         [_surfaceData addObject:@0];
     }
     
+    // note: lines is used to search through image to look for potential surfaces
     NSArray *lines = [ContourHelper getLinesForTile:tile];
     for (NSArray *line in lines) {
         NSNumber *isPixelClear = nil;
