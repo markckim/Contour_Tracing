@@ -18,7 +18,7 @@ An implementation of the Moore Neighborhood algorithm used to trace the contours
     #define DESTINATION_FOLDER @"/Users/markkim/Desktop/test_tile_data/"
 
     // select images (note: add images to project before compiling)
-    #define SPRITE_NAMES @[@"cloud"]
+    #define SPRITE_NAMES @[@"cloud", @"alien"]
 
 ![Cloud Demo](http://i.imgur.com/vsH4XQQ.png?raw=true)
 
