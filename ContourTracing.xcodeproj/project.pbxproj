@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE865A0A187908A600FDB071 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = FE865A08187908A600FDB071 /* alien.png */; };
+		FE865A0B187908A600FDB071 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = FE865A09187908A600FDB071 /* cloud.png */; };
 		FE94B4FE1877E4B8008CE71A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE94B4FD1877E4B8008CE71A /* QuartzCore.framework */; };
 		FE94B5001877E4B8008CE71A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE94B4FF1877E4B8008CE71A /* OpenGLES.framework */; };
 		FE94B5021877E4B8008CE71A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE94B5011877E4B8008CE71A /* OpenAL.framework */; };
@@ -143,11 +145,13 @@
 		FE94B6B81877E60E008CE71A /* ContourController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE94B6B71877E60E008CE71A /* ContourController.m */; };
 		FE94B6BD1877E843008CE71A /* BMPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FE94B6BC1877E843008CE71A /* BMPoint.m */; };
 		FE94B6C01877E93E008CE71A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = FE94B6BF1877E93E008CE71A /* Tile.m */; };
-		FE94B6C418784947008CE71A /* redsquare.png in Resources */ = {isa = PBXBuildFile; fileRef = FE94B6C318784947008CE71A /* redsquare.png */; };
 		FE94B6D118784E8E008CE71A /* ContourHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FE94B6D018784E8E008CE71A /* ContourHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE865A051879059E00FDB071 /* contour_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contour_functions.h; sourceTree = "<group>"; };
+		FE865A08187908A600FDB071 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
+		FE865A09187908A600FDB071 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		FE94B4FA1877E4B8008CE71A /* ContourTracing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContourTracing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE94B4FD1877E4B8008CE71A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE94B4FF1877E4B8008CE71A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -429,12 +433,10 @@
 		FE94B6B21877E544008CE71A /* DebugSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugSprite.m; sourceTree = "<group>"; };
 		FE94B6B61877E60E008CE71A /* ContourController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContourController.h; sourceTree = "<group>"; };
 		FE94B6B71877E60E008CE71A /* ContourController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContourController.m; sourceTree = "<group>"; };
-		FE94B6BA1877E807008CE71A /* functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
 		FE94B6BB1877E843008CE71A /* BMPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPoint.h; sourceTree = "<group>"; };
 		FE94B6BC1877E843008CE71A /* BMPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPoint.m; sourceTree = "<group>"; };
 		FE94B6BE1877E93E008CE71A /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		FE94B6BF1877E93E008CE71A /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
-		FE94B6C318784947008CE71A /* redsquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redsquare.png; sourceTree = "<group>"; };
 		FE94B6C918784A90008CE71A /* debug_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debug_constants.h; sourceTree = "<group>"; };
 		FE94B6CF18784E8E008CE71A /* ContourHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContourHelper.h; sourceTree = "<group>"; };
 		FE94B6D018784E8E008CE71A /* ContourHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContourHelper.m; sourceTree = "<group>"; };
@@ -461,6 +463,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE8659F81878F3FA00FDB071 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FE865A08187908A600FDB071 /* alien.png */,
+				FE865A09187908A600FDB071 /* cloud.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		FE94B4F11877E4B8008CE71A = {
 			isa = PBXGroup;
 			children = (
@@ -499,9 +510,10 @@
 			isa = PBXGroup;
 			children = (
 				FE94B6B51877E5D9008CE71A /* Classes */,
+				FE8659F81878F3FA00FDB071 /* Images */,
+				FE94B52A1877E4B8008CE71A /* libs */,
 				FE94B6B41877E5BB008CE71A /* Other */,
 				FE94B5121877E4B8008CE71A /* Resources */,
-				FE94B52A1877E4B8008CE71A /* libs */,
 				FE94B69E1877E4BB008CE71A /* Supporting Files */,
 			);
 			path = ContourTracing;
@@ -891,7 +903,6 @@
 		FE94B6B41877E5BB008CE71A /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				FE94B6C318784947008CE71A /* redsquare.png */,
 				FE94B6A21877E4BB008CE71A /* AppDelegate.h */,
 				FE94B6A31877E4BB008CE71A /* AppDelegate.m */,
 			);
@@ -903,7 +914,7 @@
 			children = (
 				FE94B6CC18784E44008CE71A /* Constants */,
 				FE94B6CA18784E0F008CE71A /* Controller */,
-				FE94B6CD18784E51008CE71A /* functions */,
+				FE94B6CD18784E51008CE71A /* Functions */,
 				FE94B6CE18784E74008CE71A /* Helpers */,
 				FE94B6CB18784E29008CE71A /* Models */,
 			);
@@ -940,12 +951,12 @@
 			name = Constants;
 			sourceTree = "<group>";
 		};
-		FE94B6CD18784E51008CE71A /* functions */ = {
+		FE94B6CD18784E51008CE71A /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				FE94B6BA1877E807008CE71A /* functions.h */,
+				FE865A051879059E00FDB071 /* contour_functions.h */,
 			);
-			name = functions;
+			name = Functions;
 			sourceTree = "<group>";
 		};
 		FE94B6CE18784E74008CE71A /* Helpers */ = {
@@ -1017,10 +1028,11 @@
 				FE94B51E1877E4B8008CE71A /* Icon-Small-50.png in Resources */,
 				FE94B5291877E4B8008CE71A /* iTunesArtwork in Resources */,
 				FE94B5221877E4B8008CE71A /* Icon-Small@2x.png in Resources */,
+				FE865A0B187908A600FDB071 /* cloud.png in Resources */,
 				FE94B51A1877E4B8008CE71A /* Default-Landscape~ipad.png in Resources */,
+				FE865A0A187908A600FDB071 /* alien.png in Resources */,
 				FE94B5181877E4B8008CE71A /* Default-568h@2x.png in Resources */,
 				FE94B5261877E4B8008CE71A /* Icon@2x.png in Resources */,
-				FE94B6C418784947008CE71A /* redsquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

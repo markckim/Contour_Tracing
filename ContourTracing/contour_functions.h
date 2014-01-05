@@ -1,17 +1,18 @@
 //
-//  functions.h
+//  contour_functions.h
 //  ContourTracing
 //
-//  Created by Mark Kim on 1/3/14.
+//  Created by Mark Kim on 1/4/14.
 //  Copyright (c) 2014 Mark Kim. All rights reserved.
 //
 
-#ifndef ContourTracing_functions_h
-#define ContourTracing_functions_h
+#ifndef ContourTracing_contour_functions_h
+#define ContourTracing_contour_functions_h
 
 #define NEIGHBOR_STEP 1
 #define PIXEL_STEP_X 1
 #define PIXEL_STEP_Y 1
+#define SHOULD_OPTIMIZE 1
 
 typedef enum {
     kWest,
@@ -38,10 +39,12 @@ pathForResourceNameAndType(NSString *name, NSString *type)
 }
 
 CG_INLINE int
-isPixelClear(unsigned char data[4])
+isPixelClear(unsigned char data[4], int alphaThreshold)
 {
+    // note: data[3] will be an alpha value between 0 and 255
+    // note: 0 = completely clear, 255 = completely opaque
     int isPixelClear = 0;
-    if (data[3] == 0) {
+    if (data[3] <= alphaThreshold) {
         isPixelClear = 1;
     }
     return isPixelClear;
@@ -208,5 +211,6 @@ getPointFromArray(NSArray *arr, int index)
     }
     return pointValue;
 }
+
 
 #endif

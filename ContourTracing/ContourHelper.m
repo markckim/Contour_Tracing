@@ -10,7 +10,7 @@
 #import "BMPoint.h"
 #import "Tile.h"
 #import "cocos2d.h"
-#import "functions.h"
+#import "contour_functions.h"
 
 @implementation ContourHelper
 
@@ -82,7 +82,7 @@
     }
 }
 
-+ (NSArray *)createSurfaceForTile:(Tile *)tile edgePoint:(BMPoint *)edgePoint alphaData:(NSMutableArray *)alphaData surfaceData:(NSMutableArray *)surfaceData
++ (NSArray *)surfaceForTile:(Tile *)tile edgePoint:(BMPoint *)edgePoint alphaData:(NSMutableArray *)alphaData surfaceData:(NSMutableArray *)surfaceData
 {
     int neighbor_debug_count = 0;
     CGRect viewRectInPixels = CGRectMake(0.0, 0.0, CC_CONTENT_SCALE_FACTOR() * tile.width, CC_CONTENT_SCALE_FACTOR() * tile.height);

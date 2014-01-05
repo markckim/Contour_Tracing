@@ -12,13 +12,14 @@
 #import "DebugSprite.h"
 #import "Tile.h"
 #import "debug_constants.h"
-#import "functions.h"
+#import "contour_functions.h"
 
 @interface ContourController ()
 
 @property (nonatomic, strong) NSMutableArray *alphaData; // @1 = clear
 @property (nonatomic, strong) NSMutableArray *surfaceData; // @1 = surface
 @property (nonatomic, strong) NSMutableArray *surfaces; // array of array of @"{x,y}" values
+@property (nonatomic, strong) Tile *currentTile;
 @property (nonatomic, strong) NSArray *tileSpriteNames;
 @property (nonatomic, strong) CCLayer *tileView;
 
@@ -28,7 +29,7 @@
 
 - (void)_saveDataForTile:(Tile *)tile
 {
-    if ([FILE_TYPE isEqualToString:@"json"]) {
+    if ([FILE_TYPE_TO_RETURN isEqualToString:@"json"]) {
         NSData *surfaceData = [NSJSONSerialization dataWithJSONObject:_surfaces options:0 error:nil];
         [surfaceData writeToFile:[NSString stringWithFormat:@"%@%@.json", DESTINATION_FOLDER, tile.name] atomically:YES];
     } else {
@@ -39,6 +40,9 @@
 
 - (void)_optimizeSurfaces
 {
+    // method removes excess adjacent points that are in the same direction
+    // (e.g., a square shape should have at most 4 points that define it)
+    // currently works for cardinal and intercardinal directions only
     NSAssert(_surfaces, @"_surfaces not setup");
     NSMutableArray *optimizedSurfaces = [[NSMutableArray alloc] init];
     
@@ -117,8 +121,8 @@
                 // note: assumes edgePoint is always a solid pixel
                 int index = indexForPoint(edgePoint.point, viewRectInPixels);
                 if (![[_surfaceData objectAtIndex:index] intValue]) {
-                    NSArray *surfacePoints = [ContourHelper createSurfaceForTile:tile edgePoint:edgePoint alphaData:_alphaData surfaceData:_surfaceData];
-                    [_surfaces addObject:surfacePoints];
+                    NSArray *surface = [ContourHelper surfaceForTile:tile edgePoint:edgePoint alphaData:_alphaData surfaceData:_surfaceData];
+                    [_surfaces addObject:surface];
                 }
             }
         }
@@ -144,13 +148,11 @@
                                                                 pixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     [renderTexture beginWithClear:1.0 g:1.0 b:1.0 a:0.0];
     [tile.view visit];
-    
     for (int i = 0; i < viewRectInPixels.size.height; ++i) {
         for (int j = 0; j < viewRectInPixels.size.width; ++j) {
             CGPoint pixelPoint = ccp(j, i);
             glReadPixels(pixelPoint.x, pixelPoint.y, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            
-            if (isPixelClear(data)) {
+            if (isPixelClear(data, ALPHA_THRESHOLD)) {
                 int index = indexForPoint(pixelPoint, viewRectInPixels);
                 [_alphaData replaceObjectAtIndex:index withObject:@1];
             }
@@ -172,7 +174,9 @@
     [self _resetData];
     [self _setupAlphaForTile:tile];
     [self _setupSurfaceForTile:tile];
-    [self _optimizeSurfaces];
+    if (SHOULD_OPTIMIZE) {
+        [self _optimizeSurfaces];
+    }
     [self _saveDataForTile:tile];
 }
 
@@ -181,20 +185,28 @@
     NSAssert(_tileSpriteNames && [_tileSpriteNames count] > 0, @"_tiles not properly setup");
     for (NSString *tileSpriteName in _tileSpriteNames) {
         Tile *tile = [[Tile alloc] init];
-        tile.view = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@.png", tileSpriteName]];
+        tile.view = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@.%@", tileSpriteName, IMAGE_FORMAT]];
         tile.name = tileSpriteName;
         tile.width = tile.view.contentSize.width;
         tile.height = tile.view.contentSize.height;
+        _currentTile = tile;
         [self _setupTile:tile];
     }
 }
 
-- (void)_setupDebugSprite
+- (void)_setupSprites
 {
     CGSize winSize = [CCDirector sharedDirector].winSize;
+    CGFloat midXOffset = 10.0;
+ 
+    // debug sprite tracing the contours
     DebugSprite *debugSprite = [[DebugSprite alloc] initWithSurfaces:_surfaces];
-    debugSprite.position = ccp(0.5 * winSize.width, 0.5 * winSize.height);
+    debugSprite.position = ccp(0.5 * winSize.width + midXOffset, 0.5 * winSize.height);
     [_tileView addChild:debugSprite];
+    
+    _currentTile.view.position = ccp(0.5 * winSize.width - 0.5 * _currentTile.view.contentSize.width - midXOffset,
+                                     0.5 * winSize.height + 0.5 * _currentTile.view.contentSize.height);
+    [_tileView addChild:_currentTile.view];
 }
 
 - (id)init
@@ -207,7 +219,7 @@
         _surfaces = [[NSMutableArray alloc] init];
         
         [self _setupData];
-        [self _setupDebugSprite];
+        [self _setupSprites];
         
         [self addChild:_tileView];
     }

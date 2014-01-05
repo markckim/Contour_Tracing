@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "debug_constants.h"
-#import "functions.h"
+#import "contour_functions.h"
 
 @interface BMPoint : NSObject
 

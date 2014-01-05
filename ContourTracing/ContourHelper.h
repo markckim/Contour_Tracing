@@ -18,9 +18,9 @@
                               pixel2:(CGPoint)pixelPoint2
                            alphaData:(NSMutableArray *)alphaData
                             viewRect:(CGRect)viewRect;
-+ (NSArray *)createSurfaceForTile:(Tile *)tile
-                        edgePoint:(BMPoint *)edgePoint
-                        alphaData:(NSMutableArray *)alphaData
-                      surfaceData:(NSMutableArray *)surfaceData;
++ (NSArray *)surfaceForTile:(Tile *)tile
+                  edgePoint:(BMPoint *)edgePoint
+                  alphaData:(NSMutableArray *)alphaData
+                surfaceData:(NSMutableArray *)surfaceData;
 
 @end
