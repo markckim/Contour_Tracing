@@ -1,8 +1,10 @@
 Contour_Tracing
 ===============
 
-An implementation of the Moore Neighborhood algorithm used to trace the contours of a given image and output a JSON (or plist) file of the resulting pixel coordinates. In order to use, go to debug_constants.h and follow these steps:
+An implementation of the Moore Neighborhood algorithm used to trace the contours of a given image and output a JSON (or plist) file of the resulting pixel coordinates. In order to use, follow these steps:
 
+    debug_constants.h
+    
     // select highest alpha value considered "clear" (0 thru 255)
     #define ALPHA_THRESHOLD 100
     
